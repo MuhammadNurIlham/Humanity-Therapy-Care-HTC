@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
     phone: DataTypes.STRING,
     role: DataTypes.STRING,
     gender: DataTypes.STRING,
-    bithdate: DataTypes.DATE,
+    bithdate: DataTypes.DATEONLY,
     address: DataTypes.STRING
   }, {
     sequelize,

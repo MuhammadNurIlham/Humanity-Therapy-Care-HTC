@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       email: {
         type: Sequelize.STRING
@@ -28,7 +28,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       bithdate: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       address: {
         type: Sequelize.STRING
