@@ -11,6 +11,36 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      // hasMany to service model
+      user.hasMany(models.service, {
+        as: "services",
+        foreignKey: {
+          name: "idUser",
+        },
+      });
+
+      // hasMany to transaction model
+      user.hasMany(models.transaction, {
+        as: "buyerTransactions",
+        foreignKey: {
+          name: "idBuyer",
+        },
+      });
+      user.hasMany(models.transaction, {
+        as: "sellerTransactions",
+        foreignKey: {
+          name: "idSeller",
+        },
+      });
+
+      // hasMany to model booking
+      user.hasMany(models.booking, {
+        as: "bookingService",
+        foreignKey: {
+          name: "idUser",
+        },
+      });
     }
   }
   user.init({
