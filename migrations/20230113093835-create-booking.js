@@ -2,39 +2,36 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('services', {
+    await queryInterface.createTable('bookings', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
-      },
-      desc: {
-        type: Sequelize.TEXT
-      },
-      price: {
-        type: Sequelize.INTEGER
-      },
-      idMember: {
+      idService: {
         type: Sequelize.INTEGER,
         references: {
-          model: "members",
+          model: "services",
           key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      idAdmin: {
+      idUser: {
         type: Sequelize.INTEGER,
         references: {
-          model: "admins",
+          model: "users",
           key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
+      },
+      schedule: {
+        type: Sequelize.DATE
+      },
+      jumlah_booking: {
+        type: Sequelize.BIGINT
       },
       createdAt: {
         allowNull: false,
@@ -49,6 +46,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('services');
+    await queryInterface.dropTable('bookings');
   }
 };
